@@ -1,0 +1,45 @@
+<div class="menu">
+
+    <!-- MENU SUPERIOR -->
+    <nav class="navbar navbar-light topMenu"
+        style="background-color: #fff; z-index: 110; margin-bottom: 30px; padding: .5rem 0.5rem;">
+        <div class="d-flex align-items-center">
+
+            <a class="tittleNavbar" href="#">{{titulo_superior}}</a>
+        </div>
+    </nav>
+
+    <!-- MENU LATERAL -->
+
+    <div class="leftMenu">
+        <div class="TituloGeneralleftMenu">
+            <p class="tittleLeftMenu">{{subTitulo_superior}}</p>
+            <div class="hamburger active" (click)="hamburguerClick()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <ul class="leftMenuList">
+            <li>
+                <a [routerLink]="['/']" skipLocationChange-- class="dropdown">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/alumnos']" skipLocationChange-- class="dropdown">
+                    <i class="fas fa-graduation-cap"></i>                  
+                      <span>Alumnos</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/lista-nsp']" skipLocationChange-- class="dropdown">
+                    <i class="fas fa-user-times"></i>
+                    <span>Lista NSP</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

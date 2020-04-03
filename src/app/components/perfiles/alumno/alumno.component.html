@@ -1,0 +1,66 @@
+<!-- <div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <button pButton type="button" icon="fas fa-graduation-cap" label="Agregar nuevo Alumno"
+                class="ui-button-raised ui-button-info"></button>
+        </div>
+    </div>
+</div> -->
+
+<div class="tarjeta">
+    <p-card>
+
+        <h5> Lista de Alumnos </h5>
+        <div class="listaAlumnos mt-5">
+                <div class="inputBusqueda d-flex justify-content-end mb-2">
+                    <app-agregar class="mr-2"></app-agregar>
+                    <input type="text" pInputText placeholder="Filtro: nombre, rut">
+                    <!-- (keyup)="filtrarPacientes(filtroPacientes)"> -->
+                </div>
+            <div class="d-flex justify-content-center">
+                <div class="tabla">
+                    <p-table [value]="alumnos" [responsive]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Rut</th>
+                                <th>Nombre</th>
+                                <th>Registro</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-alumno>
+                            <tr>
+                                <td>
+                                    <span class="ui-column-title">Rut: </span>
+                                    {{alumno.rut}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Nombre: </span>
+                                    {{alumno.nombres}} {{alumno.apellido_pat}} {{alumno.apellido_mat}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Registro: </span>
+                                    {{alumno.fecha_hora_registro | date: 'yyyy-MM-dd hh:mm'}}
+                                </td>
+                                <td><span class="ui-column-title">Acciones: </span>
+                                    <app-detalle [alumno]="alumno"></app-detalle>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>
+
+
+
+
+<!-- <div class="card">
+    <div class="card-header">
+        Lista de Alumnos
+    </div>
+
+
+</div> -->
