@@ -1,0 +1,79 @@
+<button pButton type="button" class="ui-button-raised ui-button-secondary" icon="fas fa-user-tie"
+    pTooltip="nuevo Curso" tooltipPosition="top" label="nuevo" (click)="display = true"></button>
+
+<p-dialog header="Crear nuevo Curso" [(visible)]="display" [modal]=true
+    [style]="{'max-width': '700px', 'width': '100vw'}">
+
+    <div class="container-fluid mt-3 ">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle">nombre:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(curso.nombre_curso)}"
+                    [(ngModel)]="curso.nombre_curso" />
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle">Fecha Inicio:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <p-calendar [locale]="es" dateFormat="dd/mm/yy" appendTo="body" [(ngModel)]="curso.fecha_inicio"
+                    [ngClass]="{'errorInputPrime': validError(curso.fecha_inicio)}"></p-calendar>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle"> Fecha Fin:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <p-calendar [locale]="es" dateFormat="dd/mm/yy" appendTo="body" [(ngModel)]="curso.fecha_fin"
+                    [ngClass]="{'errorInputPrime': validError(curso.fecha_fin)}"></p-calendar>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-1">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle"> Profesor:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <p-dropdown [options]="listaProfesores"  placeholder="Profesores ..." optionLabel="nombres"
+                    [showClear]="true" [ngClass]="{'errorInputPrime': validError(curso.profesor)}"
+                    [(ngModel)]="curso.profesor" appendTo="body" >
+                    <ng-template let-profe pTemplate="selectedItem"> 
+                        <span style="vertical-align:middle">
+                            {{profe.value.nombres }}
+                            {{profe.value.apellido_mat }}
+                            {{profe.value.apellido_pat }}
+                        </span>
+                    </ng-template> 
+                    <ng-template let-profe pTemplate="item"> 
+                        <div class="ui-helper-clearfix" style="position: relative;height:25px;">
+                        <div style="font-size:14px">
+                            {{profe.value.nombres }}
+                            {{profe.value.apellido_mat }}
+                            {{profe.value.apellido_pat }}
+
+                        </div> </div>
+                    </ng-template>
+
+                </p-dropdown>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="errorText" *ngIf="!validGeneral() && onSubmmit">
+                Error: Debe Ingresar los cambos requeridos.
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4"><button pButton type="button" label="Guardar"
+                class="ui-button-raised ui-button-success" (click)="guardar()"></button></div>
+
+    </div>
+</p-dialog>
+
+<app-mensaje-carga [displayCarga]="displayCarga"></app-mensaje-carga>

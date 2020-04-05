@@ -1,0 +1,59 @@
+<button pButton type="button" class="ui-button-raised ui-button-secondary" icon="fas fa-trash-alt"
+    pTooltip="Eliminar" tooltipPosition="top" (click)="abrirModal()"></button>
+
+
+
+<p-dialog header="¿Desea eliminar el siguiente curso?" [(visible)]="display" [modal]=true
+    [style]="{'max-width': '650px', 'width': '100vw'}">
+
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle">id curso:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{curso.id_curso}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle">Nombres:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{curso.nombre_curso}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle"> Fecha Inicio:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{curso.fecha_inicio |date: 'dd/MM/yyyy'}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle"> Fecha Fin:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{curso.fecha_fin |date: 'dd/MM/yyyy'}}</p>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle"> Profesor:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{curso.profesor.nombres}} {{curso.profesor.apellido_pat}} {{curso.profesor.apellido_mat}}</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <button pButton type="button" label="Cancelar" class="ui-button-raised mr-4" (click)="cerrarModal()"></button>
+            <button pButton type="button" label="Eliminar" class="ui-button-raised ui-button-danger" (click)="eliminarCurso()"></button>
+        </div>
+    </div>
+</p-dialog>

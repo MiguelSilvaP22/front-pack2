@@ -1,0 +1,52 @@
+<button pButton type="button" class="ui-button-raised ui-button-secondary" icon="fas fa-trash-alt"
+    pTooltip="Eliminar" tooltipPosition="top" (click)="abrirModal()"></button>
+
+
+
+<p-dialog header="¿Desea eliminar al siguiente alumno?" [(visible)]="display" [modal]=true
+    [style]="{'max-width': '650px', 'width': '100vw'}">
+
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle">Rut:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{alumno.rut}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle">Nombres:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{alumno.nombres}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle"> Apellido Paterno:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{alumno.apellido_pat}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-4">
+                <p class="sub_detalle"> Apellido Materno:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <p>{{alumno.apellido_mat}}</p>
+
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <button pButton type="button" label="Cancelar" class="ui-button-raised mr-4" (click)="cerrarModal()"></button>
+            <button pButton type="button" label="Eliminar" class="ui-button-raised ui-button-danger" (click)="eliminarAlumno()"></button>
+        </div>
+    </div>
+</p-dialog>

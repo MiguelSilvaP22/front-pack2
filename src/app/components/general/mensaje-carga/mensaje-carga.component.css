@@ -1,0 +1,21 @@
+.tituloModal{
+    text-align: center;
+}
+
+.circle {
+    position: relative;
+    margin: 10% auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    -webkit-box-sizing: border-box;
+    border: solid 10px rgba(255, 103, 0, 0.2);
+    border-top-color: #FF6700;
+    -webkit-animation: spin 1s infinite linear;
+  }
+
+  @-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}

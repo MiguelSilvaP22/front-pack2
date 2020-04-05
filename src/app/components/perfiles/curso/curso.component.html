@@ -1,0 +1,67 @@
+<div class="tarjeta">
+    <p-card>
+        <h5> Lista de Cursos </h5>
+        <div class="listaAlumnos mt-5">
+            <div class="inputBusqueda d-flex justify-content-end mb-2">
+
+                <!-- Boton Para agregar nuevos alumnos -->
+                <app-agregar-curso class="mr-2" (actualizar)="cargarListaCursos()"></app-agregar-curso>
+ 
+                <!-- Boton para Eliminar Alumnos -->
+                <!-- <input type="text" pInputText placeholder="Filtro: nombre, rut"
+                    (keyup)="filtroAlumnos($event.target.value)"> -->
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="tabla">
+                    <p-table [value]="cursos" [responsive]="true" [paginator]="true" [rows]="10">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>id curso</th>
+                                <th>Nombre</th>
+                                <th>Profesor</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-curso>
+                            <tr>
+                                <td>
+                                    <span class="ui-column-title">id: </span>
+                                    {{curso.id_curso}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Nombre: </span>
+                                    {{curso.nombre_curso}} 
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Profesor: </span>
+                                    {{curso.profesor?.nombres}}  
+                                    {{curso.profesor?.apellido_pat}}
+                                    {{curso.profesor?.apellido_mat}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Inicio: </span>
+                                    {{curso.fecha_inicio | date: 'yyyy/MM/dd'}} 
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">fin: </span>
+                                    {{curso.fecha_fin | date: 'yyyy/MM/dd'}} 
+                                </td>
+                                <td><span class="ui-column-title">Acciones: </span>
+                                    <!-- Boton Para ver detalle de alumno -->
+                                    <!-- <app-detalle [alumno]="alumno"></app-detalle> -->
+                                    <!-- Boton para elinar alumno -->
+                                    <app-eliminar-curso class="ml-2" [curso]="curso"
+                                        (actualizar)="cargarListaCursos()"></app-eliminar-curso>
+                                    <app-editar-curso class="ml-2" [curso_input]="curso"
+                                        (actualizar)="cargarListaCursos()"></app-editar-curso>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>

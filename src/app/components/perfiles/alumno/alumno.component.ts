@@ -10,6 +10,7 @@ import { Persona } from 'src/app/models/persona';
 export class AlumnoComponent implements OnInit {
 
   public alumnos: Persona[];
+  public alumnos_original: Persona[];
   constructor(private alumnoService: AlumnoService) { }
 
   ngOnInit(): void {
@@ -22,8 +23,22 @@ export class AlumnoComponent implements OnInit {
       respuesta => {
         console.log(respuesta);
         this.alumnos = respuesta.result;
+        this.alumnos_original = respuesta.result;
       }
     );
   }
+
+  filtroAlumnos(event) {
+
+    const resultado = this.alumnos_original.filter(
+      alumno =>
+        (alumno.nombres.indexOf(event.toUpperCase()) === 0) || 
+          (alumno.apellido_mat.toUpperCase().indexOf(event.toUpperCase()) === 0) || 
+          (alumno.apellido_pat.toUpperCase().indexOf(event.toUpperCase()) === 0) || 
+          (alumno.rut.toUpperCase().indexOf(event.toUpperCase()) === 0) 
+    );
+    this.alumnos = resultado;
+  }
+
 
 }

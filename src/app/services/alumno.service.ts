@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Persona } from '../models/persona';
 
@@ -14,7 +14,7 @@ export class AlumnoService {
    }
 
    getListaAlumnos() {
-     return this.http.get<any>(this.urlApi + 'persona');
+     return this.http.get<any>(this.urlApi + 'persona/2');
    }
 
    getDetalleAlumno(id_alumno: number) {
@@ -23,5 +23,19 @@ export class AlumnoService {
 
    guardarAlumno(alumno: Persona) {
      return this.http.post(this.urlApi + 'persona', alumno);
+   }
+   editarAlumno(alumno: Persona) {
+     return this.http.put(this.urlApi + 'persona', alumno);
+   }
+
+   eliminarAlumno(alumno: Persona) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: alumno,
+    };
+    
+     return this.http.delete(this.urlApi + 'persona', options);
    }
 }

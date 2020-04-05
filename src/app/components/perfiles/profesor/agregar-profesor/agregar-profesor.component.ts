@@ -1,23 +1,23 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Persona } from 'src/app/models/persona';
-import { AlumnoService } from 'src/app/services/alumno.service';
+import {  ProfesorService } from 'src/app/services/profesor.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-agregar',
-  templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.scss']
+  selector: 'app-agregar-profesor',
+  templateUrl: './agregar-profesor.component.html',
+  styleUrls: ['./agregar-profesor.component.scss']
 })
-export class AgregarComponent implements OnInit {
+export class AgregarProfesorComponent implements OnInit {
 
   public display = false;
-  public alumno = new Persona();
+  public profesor = new Persona();
   public displayCarga = false;
   public onSubmmit = false;
 
   @Output() actualizar: EventEmitter<any> = new EventEmitter();
 
-  constructor(private alumnoService: AlumnoService,
+  constructor(private profesorService: ProfesorService,
     private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -25,16 +25,16 @@ export class AgregarComponent implements OnInit {
 
   iniciaraFormulario() {
     this.display = false;
-    this.alumno = new Persona();
+    this.profesor = new Persona();
     this.displayCarga = false;
     this.onSubmmit = false;
   }
 
   validGeneral() {
-    if (this.alumno.rut != null && this.alumno.nombres != null
-      && this.alumno.apellido_pat != null && this.alumno.apellido_mat != null) {
-      if (this.alumno.rut.length > 0 && this.alumno.nombres.length > 0
-        && this.alumno.apellido_pat.length > 0 && this.alumno.apellido_mat.length > 0) {
+    if (this.profesor.rut != null && this.profesor.nombres != null
+      && this.profesor.apellido_pat != null && this.profesor.apellido_mat != null) {
+      if (this.profesor.rut.length > 0 && this.profesor.nombres.length > 0
+        && this.profesor.apellido_pat.length > 0 && this.profesor.apellido_mat.length > 0) {
         return true;
       } else {
         return false;
@@ -63,14 +63,14 @@ export class AgregarComponent implements OnInit {
     if (this.validGeneral()) {
       this.displayCarga = true;
 
-      // ROL ALUMNO
-      this.alumno.id_rol = 2;
+      // ROL profesor
+      this.profesor.id_rol = 1;
 
-      this.alumnoService.guardarAlumno(this.alumno).subscribe(
+      this.profesorService.guardarProfesor(this.profesor).subscribe(
         data => {
           this.actualizar.emit();
           this.iniciaraFormulario();
-          this.messageService.add({ severity: 'success', summary: 'Realizado', detail: 'Alumno agregado correctamente.' });
+          this.messageService.add({ severity: 'success', summary: 'Realizado', detail: 'profesor agregado correctamente.' });
         }
       );
     }

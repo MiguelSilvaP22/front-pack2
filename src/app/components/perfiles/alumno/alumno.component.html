@@ -1,25 +1,19 @@
-<!-- <div class="container-fluid mt-4">
-    <div class="row">
-        <div class="col-12">
-            <button pButton type="button" icon="fas fa-graduation-cap" label="Agregar nuevo Alumno"
-                class="ui-button-raised ui-button-info"></button>
-        </div>
-    </div>
-</div> -->
-
 <div class="tarjeta">
     <p-card>
-
         <h5> Lista de Alumnos </h5>
         <div class="listaAlumnos mt-5">
-                <div class="inputBusqueda d-flex justify-content-end mb-2">
-                    <app-agregar class="mr-2"></app-agregar>
-                    <input type="text" pInputText placeholder="Filtro: nombre, rut">
-                    <!-- (keyup)="filtrarPacientes(filtroPacientes)"> -->
-                </div>
+            <div class="inputBusqueda d-flex justify-content-end mb-2">
+
+                <!-- Boton Para agregar nuevos alumnos -->
+                <app-agregar class="mr-2" (actualizar)="cargarListaAlumnos()"></app-agregar>
+
+                <!-- Boton para Eliminar Alumnos -->
+                <input type="text" pInputText placeholder="Filtro: nombre, rut"
+                    (keyup)="filtroAlumnos($event.target.value)">
+            </div>
             <div class="d-flex justify-content-center">
                 <div class="tabla">
-                    <p-table [value]="alumnos" [responsive]="true">
+                    <p-table [value]="alumnos" [responsive]="true" [paginator]="true" [rows]="10">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>Rut</th>
@@ -43,7 +37,13 @@
                                     {{alumno.fecha_hora_registro | date: 'yyyy-MM-dd hh:mm'}}
                                 </td>
                                 <td><span class="ui-column-title">Acciones: </span>
+                                    <!-- Boton Para ver detalle de alumno -->
                                     <app-detalle [alumno]="alumno"></app-detalle>
+                                    <!-- Boton para elinar alumno -->
+                                    <app-eliminar-alumno class="ml-2" [alumno]="alumno"
+                                        (actualizar)="cargarListaAlumnos()"></app-eliminar-alumno>
+                                    <app-editar-alumno class="ml-2" [alumno_input]="alumno"
+                                        (actualizar)="cargarListaAlumnos()"></app-editar-alumno>
                                 </td>
                             </tr>
                         </ng-template>
@@ -56,11 +56,3 @@
 
 
 
-
-<!-- <div class="card">
-    <div class="card-header">
-        Lista de Alumnos
-    </div>
-
-
-</div> -->

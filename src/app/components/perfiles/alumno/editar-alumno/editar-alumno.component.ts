@@ -1,21 +1,23 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Persona } from 'src/app/models/persona';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { AlumnoService } from 'src/app/services/alumno.service';
+import { Persona } from 'src/app/models/persona';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-agregar',
-  templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.scss']
+  selector: 'app-editar-alumno',
+  templateUrl: './editar-alumno.component.html',
+  styleUrls: ['./editar-alumno.component.scss']
 })
-export class AgregarComponent implements OnInit {
+export class EditarAlumnoComponent implements OnInit {
 
   public display = false;
+  @Input() alumno_input: Persona;
   public alumno = new Persona();
   public displayCarga = false;
   public onSubmmit = false;
 
   @Output() actualizar: EventEmitter<any> = new EventEmitter();
+
 
   constructor(private alumnoService: AlumnoService,
     private messageService: MessageService) { }
@@ -25,9 +27,14 @@ export class AgregarComponent implements OnInit {
 
   iniciaraFormulario() {
     this.display = false;
-    this.alumno = new Persona();
     this.displayCarga = false;
     this.onSubmmit = false;
+    this.alumno = new Persona();
+  }
+
+  abrirModal() {
+    this.alumno = Object.assign({}, this.alumno_input);
+    this.display = true;
   }
 
   validGeneral() {
@@ -66,11 +73,11 @@ export class AgregarComponent implements OnInit {
       // ROL ALUMNO
       this.alumno.id_rol = 2;
 
-      this.alumnoService.guardarAlumno(this.alumno).subscribe(
+      this.alumnoService.editarAlumno(this.alumno).subscribe(
         data => {
           this.actualizar.emit();
           this.iniciaraFormulario();
-          this.messageService.add({ severity: 'success', summary: 'Realizado', detail: 'Alumno agregado correctamente.' });
+          this.messageService.add({ severity: 'success', summary: 'Realizado', detail: 'Alumno editado correctamente.' });
         }
       );
     }

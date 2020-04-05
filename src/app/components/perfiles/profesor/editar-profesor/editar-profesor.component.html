@@ -1,16 +1,15 @@
-<button pButton type="button" class="ui-button-raised ui-button-secondary" icon="fas fa-graduation-cap"
-    pTooltip="nuevo alumno" tooltipPosition="top" label="nuevo" (click)="display = true"></button>
-<p-dialog header="Crear nuevo Alumno" [(visible)]="display" [modal]=true
+<button pButton type="button" class="ui-button-raised ui-button-secondary" icon="fas fa-edit"
+    pTooltip="Editar" tooltipPosition="top"  (click)="abrirModal()"></button>
+<p-dialog header="Editar  profesor" [(visible)]="display" [modal]=true
     [style]="{'max-width': '700px', 'width': '100vw'}">
-
     <div class="container-fluid mt-3 ">
         <div class="row justify-content-center">
             <div class="col-12 col-sm-6 col-md-3">
                 <p class="sub_detalle">Rut:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(alumno.rut)}"
-                    [(ngModel)]="alumno.rut" />
+                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(profesor.rut)}"
+                    [(ngModel)]="profesor.rut" />
             </div>
         </div>
 
@@ -19,8 +18,8 @@
                 <p class="sub_detalle">Nombres:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(alumno.nombres)}"
-                    [(ngModel)]="alumno.nombres" />
+                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(profesor.nombres)}"
+                    [(ngModel)]="profesor.nombres" />
             </div>
         </div>
 
@@ -29,8 +28,8 @@
                 <p class="sub_detalle"> Apellido Paterno:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(alumno.apellido_pat)}"
-                    [(ngModel)]="alumno.apellido_pat" />
+                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(profesor.apellido_pat)}"
+                    [(ngModel)]="profesor.apellido_pat" />
             </div>
         </div>
 
@@ -39,8 +38,8 @@
                 <p class="sub_detalle"> Apellido Materno:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(alumno.apellido_mat)}"
-                    [(ngModel)]="alumno.apellido_mat" />
+                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(profesor.apellido_mat)}"
+                    [(ngModel)]="profesor.apellido_mat" />
             </div>
         </div>
 

@@ -1,0 +1,58 @@
+<div class="tarjeta">
+    <p-card>
+        <h5> Lista de Profesores </h5>
+        <div class="listaProfesors mt-5">
+            <div class="inputBusqueda d-flex justify-content-end mb-2">
+
+                <!-- Boton Para agregar nuevos profesores -->
+                <app-agregar-profesor class="mr-2" (actualizar)="cargarListaProfesores()"></app-agregar-profesor>
+
+                <!-- Boton para Eliminar Profesors -->
+                <input type="text" pInputText placeholder="Filtro: nombre, rut"
+                    (keyup)="filtroProfesors($event.target.value)">
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="tabla">
+                    <p-table [value]="profesores" [responsive]="true" [paginator]="true" [rows]="10">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Rut</th>
+                                <th>Nombre</th>
+                                <th>Registro</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-profesor>
+                            <tr>
+                                <td>
+                                    <span class="ui-column-title">Rut: </span>
+                                    {{profesor.rut}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Nombre: </span>
+                                    {{profesor.nombres}} {{profesor.apellido_pat}} {{profesor.apellido_mat}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Registro: </span>
+                                    {{profesor.fecha_hora_registro | date: 'yyyy-MM-dd hh:mm'}}
+                                </td>
+                                <td><span class="ui-column-title">Acciones: </span>
+                                    <!-- Boton Para ver detalle de profesor -->
+                                    <!-- <app-detalle-profesor [profesor]="profesor"></app-detalle-profesor> -->
+                                    <!-- Boton para elinar profesor -->
+                                    <app-eliminar-profesor class="ml-2" [profesor]="profesor"
+                                        (actualizar)="cargarListaProfesores()"></app-eliminar-profesor>
+                                    <app-editar-profesor class="ml-2" [profesor_input]="profesor"
+                                        (actualizar)="cargarListaProfesores()"></app-editar-profesor>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>
+
+
+
