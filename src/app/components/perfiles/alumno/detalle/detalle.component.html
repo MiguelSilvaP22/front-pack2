@@ -20,7 +20,7 @@
                 <p class="sub_detalle">Nombres:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                Miguel Oscar
+                <p>{{alumno.nombres}}</p>
             </div>
         </div>
 
@@ -29,7 +29,8 @@
                 <p class="sub_detalle"> Apellido Paterno:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                Silva
+                <p>{{alumno.apellido_pat}}</p>
+
             </div>
         </div>
 
@@ -38,7 +39,7 @@
                 <p class="sub_detalle"> Apellido Materno:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                Pacheco
+                <p>{{alumno.apellido_mat}}</p>
             </div>
         </div>
         <div class="row mt-1">
@@ -46,7 +47,7 @@
                 <p class="sub_detalle"> Cursos registrados:</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                12 Cursos
+                <p>{{cantidadCursos(detalle_alumno.cursos)}}</p>
             </div>
         </div>
 
@@ -61,7 +62,7 @@
                             <th>Profesor</th>
                             <th>Fecha Inicio</th>
                             <th>Fecha Fin</th>
-                            <th>Acciones</th>
+                            <th>Promedio</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-curso>
@@ -70,6 +71,7 @@
                             <td>juanito</td>
                             <td>{{curso.fecha_inicio | date: 'yyyy/MM/dd'}}</td>
                             <td>{{curso.fecha_fin | date: 'yyyy/MM/dd'}}</td>
+                            <td>{{obtenerPromedio(curso.evaluaciones)}}</td>
                         </tr>
                     </ng-template>
                 </p-table>

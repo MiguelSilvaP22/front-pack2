@@ -1,0 +1,55 @@
+<div class="tarjeta">
+    <p-card>
+        <h5> Lista de Evaluaciones </h5>
+        <div class="listaAlumnos mt-5">
+            <div class="inputBusqueda d-flex justify-content-end mb-2">
+
+                <!-- Boton Para agregar nuevos alumnos -->
+                <app-crear-evaluacion class="mr-2" (actualizar)="cargarListaEvaluaciones()"></app-crear-evaluacion>
+ 
+                <!-- Boton para Eliminar Alumnos -->
+                <!-- <input type="text" pInputText placeholder="Filtro: nombre, rut"
+                    (keyup)="filtroAlumnos($event.target.value)"> -->
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="tabla">
+                    <p-table [value]="listaEvaluaciones" [responsive]="true" [paginator]="true" [rows]="10">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Curso</th>
+                                <th>Descripcion</th>
+                                <th>Fecha Evaluación</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-evaluacion>
+                            <tr>
+                                <td>
+                                    <span class="ui-column-title">id: </span>
+                                    {{evaluacion.curso.nombre_curso}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">id: </span>
+                                    {{evaluacion.descripcion}}
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">id: </span>
+                                    {{evaluacion.fecha_evaluacion | date: 'dd/MM/yyyy hh:mm'}}
+                                </td>
+                                <td>
+                                    <!-- Boton para elinar Evaluacion -->
+                                    <app-editar-evaluacion class="ml-2" [evaluacion_input]="evaluacion"
+                                    (actualizar)="cargarListaEvaluaciones()"></app-editar-evaluacion>
+                                    <app-eliminar-evaluacion class="ml-2" [evaluacion]="evaluacion"
+                                    (actualizar)="cargarListaEvaluaciones()"></app-eliminar-evaluacion>
+                                    <app-evaluar-alumnos [evaluacion]="evaluacion"
+                                    (actualizar)="cargarListaEvaluaciones()" class="ml-2"></app-evaluar-alumnos>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>

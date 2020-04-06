@@ -30,5 +30,32 @@ export class DetalleComponent implements OnInit {
       }
     );
   }
+  cantidadCursos(cursos){
+    if(cursos != null) {
+      return cursos.length
+    } else {
+      return 0;
+    }
+  }
+
+  obtenerPromedio(evaluaciones){
+    let promedio = 0;
+    let cantidad = 0
+    if(evaluaciones != null) {
+      evaluaciones.forEach(element => {
+        if (element.nota != null)
+        {
+          promedio = promedio + element.nota.puntaje;
+          cantidad ++;
+        }
+      });
+    }
+
+    if (promedio > 0 && cantidad > 0) {
+      return promedio / cantidad;
+    } else {
+      return ' - '
+    }
+  }
 
 }

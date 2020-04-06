@@ -18,6 +18,9 @@ import { MessageService } from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
+import {CheckboxModule} from 'primeng/checkbox';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +41,12 @@ import { EditarProfesorComponent } from './components/perfiles/profesor/editar-p
 import { DetalleProfesorComponent } from './components/perfiles/profesor/detalle-profesor/detalle-profesor.component';
 import { EliminarProfesorComponent } from './components/perfiles/profesor/eliminar-profesor/eliminar-profesor.component';
 import { RegistrarAlumnosComponent } from './components/perfiles/curso/registrar-alumnos/registrar-alumnos.component';
+import { EvaluacionComponent } from './components/perfiles/evaluacion/evaluacion.component';
+import { CrearEvaluacionComponent } from './components/perfiles/evaluacion/crear-evaluacion/crear-evaluacion.component';
+import { EditarEvaluacionComponent } from './components/perfiles/evaluacion/editar-evaluacion/editar-evaluacion.component';
+import { EliminarEvaluacionComponent } from './components/perfiles/evaluacion/eliminar-evaluacion/eliminar-evaluacion.component';
+import { VerEvaluacionComponent } from './components/perfiles/evaluacion/ver-evaluacion/ver-evaluacion.component';
+import { EvaluarAlumnosComponent } from './components/perfiles/evaluacion/evaluar-alumnos/evaluar-alumnos.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +67,13 @@ import { RegistrarAlumnosComponent } from './components/perfiles/curso/registrar
     EditarProfesorComponent,
     DetalleProfesorComponent,
     EliminarProfesorComponent,
-    RegistrarAlumnosComponent
+    RegistrarAlumnosComponent,
+    EvaluacionComponent,
+    CrearEvaluacionComponent,
+    EditarEvaluacionComponent,
+    EliminarEvaluacionComponent,
+    VerEvaluacionComponent,
+    EvaluarAlumnosComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +91,8 @@ import { RegistrarAlumnosComponent } from './components/perfiles/curso/registrar
     ConfirmDialogModule,
     ToastModule,
     CalendarModule,
-    DropdownModule
+    DropdownModule,
+    CheckboxModule
     ],
   providers: [MessageService],
   bootstrap: [AppComponent]

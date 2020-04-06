@@ -21,7 +21,6 @@ export class CursoComponent implements OnInit {
   cargarListaCursos() {
     this.cursoService.getListaCursos().subscribe(
       respuesta => {
-        console.log(respuesta);
         this.cursos = respuesta.result;
         this.cursos_original = respuesta.result;
       }

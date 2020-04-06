@@ -51,11 +51,12 @@
                                 <td><span class="ui-column-title">Acciones: </span>
                                     <!-- Boton Para ver detalle de alumno -->
                                     <!-- <app-detalle [alumno]="alumno"></app-detalle> -->
-                                    <!-- Boton para elinar alumno -->
+                                    <!-- Boton para elinar curso -->
                                     <app-eliminar-curso class="ml-2" [curso]="curso"
                                         (actualizar)="cargarListaCursos()"></app-eliminar-curso>
                                     <app-editar-curso class="ml-2" [curso_input]="curso"
                                         (actualizar)="cargarListaCursos()"></app-editar-curso>
+                                    <app-registrar-alumnos [curso]="curso" class="ml-2"></app-registrar-alumnos>
                                 </td>
                             </tr>
                         </ng-template>

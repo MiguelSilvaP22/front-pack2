@@ -34,5 +34,25 @@ export class CursoService {
     
      return this.http.delete(this.urlApi + 'curso', options);
    }
+
+   obtenerALumnosCurso(id_curso) {
+    return this.http.get<any>(this.urlApi + 'alumnos_de_curso/' + id_curso);
+   }
+
+   regitrarAlumno(registro) {
+    return this.http.post(this.urlApi + 'alumno_curso', registro);
+   }
+   
+   eliminarAlumnoCurso(registro) {
+     console.log(registro)
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: registro,
+    };
+    
+    return this.http.delete(this.urlApi + 'alumno_curso', options);
+   }
   
 }

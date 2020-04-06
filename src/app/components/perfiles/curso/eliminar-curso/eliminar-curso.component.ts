@@ -22,22 +22,22 @@ export class EliminarCursoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  abrirModal(){
+  abrirModal() {
     this.display = true;
   }
   cerrarModal() {
     this.display = false;
   }
 
-eliminarCurso(){
-  this.cursoService.eliminarAlumno(this.curso).subscribe(
-    data => {
-      console.log(data);
-      this.actualizar.emit();
-      this.messageService.add({severity:'success', summary:'Realizado', detail:'Curso eliminado correctamente.'});
-    }  )
+  eliminarCurso() {
+    this.cursoService.eliminarAlumno(this.curso).subscribe(
+      data => {
+        console.log(data);
+        this.actualizar.emit();
+        this.messageService.add({ severity: 'success', summary: 'Realizado', detail: 'Curso eliminado correctamente.' });
+      })
 
-}
-  
+  }
+
 
 }

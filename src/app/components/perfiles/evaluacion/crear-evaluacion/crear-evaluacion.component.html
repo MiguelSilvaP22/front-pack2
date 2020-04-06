@@ -1,0 +1,55 @@
+<button pButton type="button" class="ui-button-raised ui-button-secondary" icon="fas fa-book"
+    pTooltip="nueva Evaluacion" tooltipPosition="top" label="nueva" (click)="display = true"></button>
+
+<p-dialog header="Crear nueva Evaluación" [(visible)]="display" [modal]=true
+    [style]="{'max-width': '700px', 'width': '100vw'}">
+
+    <div class="container-fluid mt-3 ">
+
+        <div class="row justify-content-center mt-1">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle"> Profesor:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <p-dropdown [options]="listaCursos"  placeholder="Cursos ..." optionLabel="nombre_curso"
+                    [showClear]="true" [ngClass]="{'errorInputPrime': validError(evaluacion.curso)}"
+                    [(ngModel)]="evaluacion.curso" appendTo="body" >
+
+
+                </p-dropdown>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle">Descripción:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <input type="text" pInputText [ngClass]="{'errorInputPrime': validError(evaluacion.descripcion)}"
+                    [(ngModel)]="evaluacion.descripcion" />
+            </div>
+        </div>
+
+        
+        <div class="row justify-content-center mt-2">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle"> Fecha Evaluación:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <p-calendar [locale]="es" dateFormat="dd/mm/yy" appendTo="body" [(ngModel)]="evaluacion.fecha_evaluacion"
+                    [ngClass]="{'errorInputPrime': validError(evaluacion.fecha_evaluacion)}"></p-calendar>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="errorText" *ngIf="!validGeneral() && onSubmmit">
+                Error: Debe Ingresar los cambos requeridos.
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4"><button pButton type="button" label="Guardar"
+                class="ui-button-raised ui-button-success" (click)="guardar()"></button></div>
+
+    </div>
+</p-dialog>
+
+<app-mensaje-carga [displayCarga]="displayCarga"></app-mensaje-carga>

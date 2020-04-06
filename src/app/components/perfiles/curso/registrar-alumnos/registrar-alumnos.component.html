@@ -1,1 +1,72 @@
-<p>registrar-alumnos works!</p>
+<button pButton type="button" class="ui-button-raised ui-button-secondary" icon="fas fa-graduation-cap" 
+    pTooltip="Registar Alumnos"
+    tooltipPosition="top" (click)="abrirModal()"></button>
+
+
+
+<p-dialog header="Registro de Alumnos" [(visible)]="display" [modal]=true [style]="{'max-width': '900px', 'width': '100vw'}">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                 <p class="sub_detalle">Nombre Curso:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <p>{{curso.nombre_curso}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle">profesor:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                {{curso?.profesor?.nombres}}
+                {{curso?.profesor?.apellido_pat}}
+                {{curso?.profesor?.apellido_mat}}
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle"> Fecha Inicio:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                {{curso?.fecha_inicio | date: 'dd/MM/yyyy'}}
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="col-12 col-sm-6 col-md-3">
+                <p class="sub_detalle"> Apellido Materno:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                {{curso?.fecha_fin | date: 'dd/MM/yyyy'}}
+
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <h5>Lista de Alumnos</h5>
+
+                <p-table [value]="listaAlumnosCurso" [responsive]="true"  [paginator]="true" [rows]="10">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Registrar</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-alumno>
+                        <tr>
+                            <td>{{alumno.rut}}</td>
+                            <td>{{alumno.nombres}} {{alumno.apellido_pat}} {{alumno.apellido_mat}}</td>
+                            <td><p-checkbox [(ngModel)]="alumno.pertenese_curso" [binary]="true" (click)="clickRegistro(alumno)"></p-checkbox></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</p-dialog>
